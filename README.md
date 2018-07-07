@@ -1,19 +1,19 @@
 # codcheck
-
-FIXME
+[![Build Status](https://travis-ci.com/FieryCod/codcheck-github-hook.svg?branch=master)](https://travis-ci.com/FieryCod/codcheck-github-hook)
+<a href="https://opensource.org/licenses/mit-license.php"><img src="https://badges.frapsoft.com/os/mit/mit.svg?v=103" alt="MIT Licence"></a>
 
 ## Prerequisites
 
-You will need [Leiningen][] 2.0.0 or above installed.
-
-[leiningen]: https://github.com/technomancy/leiningen
+You will need:
+- docker
+- docker-compose
 
 ## Running
 
-To start a web server for the application, run:
+To start the dev server run:
 
-    lein ring server
+    lein dc-up
 
 ## License
 
-Copyright © 2018 FIXME
+Copyright © 2018 FieryCod
