@@ -5,9 +5,9 @@
   "Handles errors of app"
   [err]
   (let [msg (.getMessage err)]
-    (do (timbre/log :error msg)
-        {:status 500
-         :body {:msg (str "Internal server error: " msg)}})))
+    (timbre/log :error msg)
+    {:status 500
+     :body {:msg (str "Internal server error: " msg)}}))
 
 (defn wrap-exception
   "Wraps the ring-handler with the error-handler"

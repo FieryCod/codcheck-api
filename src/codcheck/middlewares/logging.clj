@@ -6,4 +6,6 @@
   (timbre/log level throwable message))
 
 (defn log-request [handler]
-  (ring-logger/wrap-log-response handler {:log-fn log-fn :log-exceptions? false}))
+  (ring-logger/wrap-log-response
+   handler
+   {:log-fn log-fn :log-exceptions? false}))

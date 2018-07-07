@@ -1,0 +1,10 @@
+language: clojure
+sudo: required
+lein: lein
+jdk:
+  - oraclejdk8
+  - oraclejdk9
+script: lein do ci-check test
+branches:
+  only:
+    - master
