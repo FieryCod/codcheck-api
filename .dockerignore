@@ -1,0 +1,17 @@
+target
+test
+lib
+classes
+checkouts
+docker
+deployment
+pom.xml
+pom.xml.asc
+GPATH
+GRTAGS
+GTAGS
+.DS_Store
+*.jar
+*.class
+/.lein-*
+/.nrepl-port

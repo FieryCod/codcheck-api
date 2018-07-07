@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  web:
+    environment:
+      - ENVIRONMENT=development
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.development
+    command: lein ring server-headless 8000
+    volumes:
+      - ../:/usr/src/codcheck
+    ports:
+      - "8000:8000"

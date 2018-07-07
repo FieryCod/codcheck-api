@@ -1,0 +1,10 @@
+FROM clojure
+
+ENV HOST 0.0.0.0
+
+COPY . /usr/src/codcheck
+WORKDIR /usr/src/codcheck
+
+RUN lein
+
+EXPOSE 8000
