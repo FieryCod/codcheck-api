@@ -1,7 +1,10 @@
 (ns codcheck.routes
-  (:require [compojure.core :refer [routes defroutes]]
+  (:require [compojure.core :refer [routes defroutes context]]
             [compojure.route :refer [not-found]]
             [codcheck.controllers.home :refer [home-route]]))
+
+(defonce ^{:doc "All api routes are prefixed with 'api-base-prefix URI"}
+  api-base-prefix "/api/v1")
 
 (defn not-found-route
   "Handler for all routes which does not exists in controllers"
@@ -11,11 +14,12 @@
    :body {:message (str "Route " (request :uri) " not found!")
           :status "RouteNotFound"}})
 
-(defn routing-controllers
-  "Defines the routing for controllers"
-  [controllers]
-  (apply routes (conj controllers not-found-route)))
+(defn api-routes
+  "Prefix all routes with 'api-base-prefix"
+  [routes-fns]
+  (context api-base-prefix []
+           (apply routes routes-fns)))
 
-(def routing
+(def routing-controllers
   "All routes handlers"
-  (routing-controllers [home-route]))
+  (routes (api-routes [home-route]) not-found-route))
