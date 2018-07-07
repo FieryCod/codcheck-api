@@ -4,4 +4,4 @@
 
 (defroutes home-route
   (GET "/" [] "Application is working...")
-  (GET "/favicon.ico" [] (not-found "")))
+  (GET "/favicon.ico" [] (not-found "no favicon")))

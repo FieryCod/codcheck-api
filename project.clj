@@ -23,5 +23,8 @@
 
   :profiles {:dev {:dependencies [[javax.servlet/javax.servlet-api "4.0.1"]
                                   [ring/ring-mock "0.3.0"]]
+
                    :aliases {"dc-up" ["do" ["shell"
-                                            "docker-compose" "-f" "docker/docker-compose.development.yml" "up"]]}}})
+                                            "docker-compose" "-f" "docker/docker-compose.development.yml" "up"]]
+                             "dc-restart" ["do" ["shell"
+                                                 "docker-compose" "-f" "docker/docker-compose.development.yml" "restart"]]}}})

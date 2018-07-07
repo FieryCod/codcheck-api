@@ -21,5 +21,5 @@
            (apply routes routes-fns)))
 
 (def routing-controllers
-  "All routes handlers"
+  "Routing controllers handler"
   (routes (api-routes [home-route]) not-found-route))
