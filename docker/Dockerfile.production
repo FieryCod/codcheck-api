@@ -1,15 +1,14 @@
-FROM clojure:lein-2.8.1-alpine
+FROM openjdk:8-alpine3.8
 MAINTAINER Karol Wojcik <kwcharllie379@gmail.com>
 
 ENV HOST 0.0.0.0
 ENV ENVIRONMENT=development
+ARG STANDALONE_APP
 
 WORKDIR /usr/src/codcheck-api
 
-COPY project.clj /usr/src/codcheck-api
-
-COPY . /usr/src/codcheck-api
+COPY $STANDALONE_APP /usr/src/codcheck-api/codcheck-api.jar
 
 EXPOSE 8000
 
-CMD lein ring server-headless
+CMD java -jar codcheck-api.jar

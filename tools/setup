@@ -1,0 +1,38 @@
+#!/bin/bash
+
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+copy_env_files () {
+  printf "\n\n### ${GREEN}Preparing development and test environment ...${NC}\n\n"
+
+  printf "
+  ########################################################
+  #                                                      #
+  # BEWARE!                                              #
+  #                                                      #
+  # This will overwrite any existing .env.development    #
+  # and .env.test files.                                 #
+  ########################################################\n\n\n"
+
+  printf "Copying .env files..."
+
+  cp -i .env.development.example.edn .env.development.edn
+
+  printf "\n### ${GREEN} Installing dependencies...${NC}\n"
+
+  lein deps
+
+  printf "\n### ${GREEN} Dependencies installed ;)...${NC}\n"
+
+  if [ ! -f codcheck-api.pem ]; then
+    echo "${RED}There is no file codcheck-api.pem with the private key${NC}\n"
+    exit -1
+  fi
+
+  echo `awk '{printf "%s\\n", $0}' codcheck-api.pem`
+}
+
+$@

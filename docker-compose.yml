@@ -5,10 +5,16 @@ services:
     environment:
       - ENVIRONMENT=development
     build:
-      context: ../
       dockerfile: docker/Dockerfile.development
+      context: .
     command: lein ring server-headless 8000
     volumes:
-      - ../:/usr/src/codcheck
+      - .:/usr/src/codcheck-api
+      - ~/.m2:/root/.m2
     ports:
       - "8000:8000"
+
+networks:
+  default:
+    external:
+      name: codcheck-network

@@ -1,0 +1,1 @@
+echo $(cat project.clj | grep "defproject" | head -1 | sed 's/(defproject codcheck-api "//g' | sed 's/"//g')

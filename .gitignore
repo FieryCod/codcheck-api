@@ -11,5 +11,8 @@ GTAGS
 .DS_Store
 *.jar
 *.class
+.env.development
+.env.test
 /.lein-*
 /.nrepl-port
+*.pem
