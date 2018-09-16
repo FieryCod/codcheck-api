@@ -5,8 +5,8 @@
    [codcheck-api.routes :refer [routing-controllers]]
    [codcheck-api.errors.middleware :refer [wrap-exception]]
    [codcheck-api.common.middleware :refer [wrap-raw-body wrap-not-found]]
-   [codcheck-api.logging.setup :refer [setup-timbre]]
-   [codcheck-api.logging.middleware :refer [wrap-with-log-response wrap-with-log-request]]))
+   [codcheck-api.logging.middleware :refer [wrap-with-log-response wrap-with-log-request]]
+   [codcheck.logging :as codcheck-logging]))
 
 (def api-handler
   (-> routing-controllers
@@ -17,7 +17,7 @@
 (def runnable-server
   "Runnable server instance"
   (do
-   (setup-timbre)
+   (codcheck-logging/setup-logging "codcheck-api")
    (-> (wrap-defaults api-handler api-defaults)
       (wrap-exception)
       (wrap-json-response)

@@ -1,17 +1,14 @@
 (defproject codcheck-api "0.0.2"
   :description "API of codcheck application"
 
-  :dependencies [[org.clojure/clojure "1.10.0-alpha7"]
+  :dependencies [[org.clojure/clojure "1.10.0-alpha6"]
                  [compojure "1.6.1"]
-                 [com.taoensso/timbre "4.10.0"]
                  [org.clojure/core.async "0.4.474"]
                  [ring/ring-json "0.4.0"]
+                 [cheshire "5.8.0"]
                  [clj-time "0.14.4"]
-                 [buddy/buddy-core "1.5.0"]
-                 [buddy/buddy-auth "2.1.0"]
-                 [commons-codec/commons-codec "1.11"]
+                 [codcheck "0.0.1"]
                  [ring/ring-defaults "0.3.2"]
-                 [org.slf4j/slf4j-simple "1.8.0-beta2"]
                  [com.novemberain/langohr "5.0.0"]
                  [irresponsible/tentacles "0.6.2"]]
 

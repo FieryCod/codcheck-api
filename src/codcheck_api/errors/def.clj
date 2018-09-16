@@ -6,9 +6,11 @@
                 :statusCode 401}))
 
 (defn RouteNotFound
-  [msg]
-  (ex-info msg {:status "RouteNotFound"
-                :statusCode 404}))
+  [route]
+  (ex-info
+   (str "Route " route " not found!")
+   {:status "RouteNotFound" :statusCode 404}))
+
 (defn BadRequest
   [msg]
   (ex-info msg {:status "BadRequest"

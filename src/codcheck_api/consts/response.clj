@@ -14,3 +14,6 @@
 
 (def not-supported-gh-event-msg
   "Event is not supported: ")
+
+(def pr-closed-msg
+  "Pull request has been closed")

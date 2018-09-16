@@ -19,4 +19,5 @@
   (fn [request]
     (try (handler request)
          (catch Exception err
+           (println err)
            (handle-error err)))))

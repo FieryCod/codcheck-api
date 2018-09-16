@@ -1,7 +1,7 @@
 (ns codcheck-api.health.controller
   (:require
-   [compojure.core :as compojure]
    [compojure.route]
+   [compojure.core :as compojure]
    [codcheck-api.consts.path :as consts-path]
    [codcheck-api.common.response :as common-response]))
 

@@ -5,26 +5,26 @@
    [codcheck-api.consts.response :as consts-response]
    [codcheck-api.common.response :as common-response]
    [codcheck-api.errors.def :as errors-def]
-   [codcheck-api.rmq.core :as rmq]
-   [codcheck-api.rmq.config :as rmq-config]))
+   [codcheck.rmq :as codcheck-rmq]))
 
 (defn- code-check-event
   [request]
-  (let [chan (langohr-chan/open rmq/conn)
-        event-key :gh-pr-code-check]
+  (let [event-key :gh-pr-code-check]
 
-    (langohr-basic/publish chan
-                           (event-key rmq-config/exchanges)
-                           (event-key rmq-config/routing-keys)
+    (langohr-basic/publish @codcheck-rmq/chan
+                           (event-key codcheck-rmq/exchanges)
+                           (event-key codcheck-rmq/routing-keys)
                            (str request))))
 
 (defn handle-pr
   [{{:keys [action]} :body :as request}]
+
   (condp = action
     "opened" (code-check-event request)
-    (throw (errors-def/NotSupportedGhAction (str consts-response/not-supported-action-msg action))))
+    "closed" (common-response/success consts-response/pr-closed-msg)
 
-  (common-response/success consts-response/success-pr-event-msg))
+    (throw (errors-def/NotSupportedGhAction (str consts-response/not-supported-action-msg action)))))
+
 
 (defn handle-un-install
   [request]

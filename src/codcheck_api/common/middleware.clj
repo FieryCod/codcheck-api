@@ -7,10 +7,9 @@
 (defn wrap-not-found
   "Handler for all routes which does not exists in controllers"
   [handler]
-  (compojure/routes
-   handler
-   (fn [request]
-     (throw (errors-def/RouteNotFound (str "Route " (request :uri) " not found!"))))))
+  (compojure/routes handler
+                    (fn [request]
+                      (throw (errors-def/RouteNotFound (request :uri))))))
 
 (defn wrap-raw-body
   [handler]

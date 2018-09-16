@@ -1,6 +1,6 @@
 (ns codcheck-api.webhook.validator
   (:require
-   [codcheck-api.webhook.auth :as webhook-auth]
+   [codcheck.auth :as codcheck-auth]
    [codcheck-api.errors.def :as errors-def]
    [clojure.string :as string]))
 
@@ -15,7 +15,7 @@
         (when (not= method "sha1")
           (throw (errors-def/InvalidGhSignature "Wrong method used")))
 
-        (when (not= gh-signature (.hmacHex webhook-auth/gh-sha1-generator (:raw-body request)))
+        (when (not= gh-signature (.hmacHex codcheck-auth/gh-sha1-generator (:raw-body request)))
           (throw (errors-def/InvalidGhSignature "Request signature does not match with API one")))
 
         (handler request)))))
