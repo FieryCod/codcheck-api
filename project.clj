@@ -1,4 +1,4 @@
-(defproject codcheck.api "0.0.2"
+(defproject codcheck.api "0.0.3"
   :description "API of codcheck application"
 
   :dependencies [[org.clojure/clojure "1.10.0"]
@@ -7,7 +7,7 @@
                  [ring/ring-json "0.4.0"]
                  [cheshire "5.8.0"]
                  [clj-time "0.14.4"]
-                 [codcheck "0.0.2"]
+                 [codcheck "0.0.8"]
                  [ring/ring-defaults "0.3.2"]
                  [com.novemberain/langohr "5.0.0"]
                  [irresponsible/tentacles "0.6.2"]]
