@@ -6,6 +6,6 @@
 (defn only-development
   [handler]
   (fn [request]
-    (if (= (:clj-env envs) "development")
+    (if (= (:CLJ_ENV envs) "development")
       (handler request)
       (throw (error/RouteNotFound (:uri request))))))
