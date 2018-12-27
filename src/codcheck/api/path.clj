@@ -1,4 +1,4 @@
-(ns codcheck-api.consts.path)
+(ns codcheck.api.path)
 
 (def webhook "/webhook")
 (def health "/health")

@@ -1,4 +1,4 @@
-(ns codcheck-api.errors.def)
+(ns codcheck.api.common.error)
 
 (defn InvalidGhSignature
   [msg]
@@ -7,9 +7,8 @@
 
 (defn RouteNotFound
   [route]
-  (ex-info
-   (str "Route " route " not found!")
-   {:status "RouteNotFound" :statusCode 404}))
+  (ex-info (str "Route " route " not found!") {:status "RouteNotFound"
+                                               :statusCode 404}))
 
 (defn BadRequest
   [msg]

@@ -1,4 +1,4 @@
-(ns codcheck-api.common.response
+(ns codcheck.api.common.response
   (:require
    [ring.util.response :as ring-response]
    [clojure.string :as string]))

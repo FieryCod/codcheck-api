@@ -1,11 +1,11 @@
-(ns codcheck-api.development.middleware
+(ns codcheck.api.development.middleware
   (:require
    [codcheck.envs :refer [envs]]
-   [codcheck-api.errors.def :as errors-def]))
+   [codcheck.api.common.error :as error]))
 
 (defn only-development
   [handler]
   (fn [request]
     (if (= (:clj-env envs) "development")
       (handler request)
-      (throw (errors-def/RouteNotFound (:uri request))))))
+      (throw (error/RouteNotFound (:uri request))))))
