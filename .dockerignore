@@ -19,7 +19,6 @@ gTAGS
 LICENSE
 *.pem
 .DS_Store
-*.jar
 *.class
 /.lein-*
 /.nrepl-port

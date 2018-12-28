@@ -3,12 +3,10 @@ MAINTAINER Karol Wojcik <kwcharllie379@gmail.com>
 
 ENV HOST 0.0.0.0
 ENV ENVIRONMENT=development
-ARG STANDALONE_APP
 
 WORKDIR /usr/src/codcheck-api
-
-COPY $STANDALONE_APP /usr/src/codcheck-api/codcheck-api.jar
+COPY codcheck-api.jar codcheck-api.jar
 
 EXPOSE 8000
 
-CMD java -jar codcheck-api.jar
+ENTRYPOINT ["java", "-jar","codcheck-api.jar"]
